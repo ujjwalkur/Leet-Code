@@ -16,7 +16,6 @@ class Solution {
         
         while(node != null){
            value =  (value * 2) + node.val;
-            // value *= 2 + node,val
             
             node = node.next;
         }
