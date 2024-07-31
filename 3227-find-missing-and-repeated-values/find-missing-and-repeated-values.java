@@ -11,7 +11,7 @@ public class Solution {
 
         int a = -1, b = -1;
         for (int i = 1; i <= n * n; i++) {
-            var curValue = m.getOrDefault(i, 0) ;
+            int curValue = m.getOrDefault(i, 0) ;
             if (curValue == 2) {
                 a = i;
             } else if (curValue == 0) {
