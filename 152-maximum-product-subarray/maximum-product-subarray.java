@@ -1,23 +1,25 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        double leftProduct = 1;
-        double rightProduct = 1;
-        double ans =  nums[0];
         
-        for(int i=0;i<nums.length;i++){
+        double maxi = nums[0];
+        double pre = 1; 
+        double suff = 1;
+        
+        for(int i = 0; i < nums.length; i++){
             
-            if(leftProduct==0){
-                leftProduct=1;
+            if(pre == 0){
+                pre = 1;
             }
-            if(rightProduct==0){
-                rightProduct=1;
+            
+            if(suff == 0){
+                suff = 1;
             }
             
-            leftProduct = leftProduct * nums[i];
-            rightProduct = rightProduct * nums[nums.length-i-1];
+            pre *= nums[i];
+            suff *= nums[nums.length-i-1];
             
-            ans  = Math.max(ans,Math.max(leftProduct,rightProduct));
+            maxi = Math.max(maxi, Math.max(pre, suff));
         }
-        return (int)ans;
-    }
+        return (int)maxi;
+    }   
 }
