@@ -1,39 +1,36 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         
-        int n1 = nums1.length;
-        int n2 = nums2.length;
+        int[] nge = new int[nums2.length];
+        Stack<Integer> st = new Stack<>();
         
-        Stack <Integer> st = new Stack<>();
-        int nextgreat [] = new int [n2];
-        
-        for(int i=n2-1;i>=0;i--)
-        {
-            while(!st.isEmpty() && st.peek()<=nums2[i]){
+        for(int i = nums2.length-1; i>= 0; i--){
+            while(!st.isEmpty() && st.peek() <= nums2[i]){
                 st.pop();
-            } 
+            }
             
-            if(st.isEmpty())
-                nextgreat[i] = -1;
-            else 
-                nextgreat[i] = st.peek();
+            if(st.isEmpty()){
+                nge[i] = -1;
+            }
+            else{
+                nge[i] = st.peek();
+            }
             
             st.push(nums2[i]);
         }
         
-        int arr[] = new int[n1];
+         int arr[] = new int[nums1.length];
         
-        for(int i=0;i<n1;i++)
-        {
-            for(int j=0;j<n2;j++)
-        {
-            if(nums1[i] == nums2[j])
-            {
-                arr[i] = nextgreat[j];
+        for(int i=0;i<nums1.length;i++){
+            
+            for(int j=0;j<nums2.length;j++){
+                
+            if(nums1[i] == nums2[j]){
+                
+                arr[i] = nge[j];
             } 
+          }
         }
-        }
-        //System.out.println(nextgreat[1]);
         return arr;
     }
 }
