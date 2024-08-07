@@ -16,19 +16,21 @@ class MinStack {
         st = new Stack<>();
     }
     
-    public void push(int x) {
+    public void push(int val) {
         int min;
-       if(st.isEmpty()){
-           min = x;
-       }
-        else{
-            min = Math.min(st.peek().y, x);
+        
+        if(st.empty()){
+            min = val;
         }
-        st.push(new Pair(x, min));
+        else{
+            min = Math.min(st.peek().y, val);
+        }
+        
+        st.push(new Pair(val, min));
     }
     
     public void pop() {
-        st.pop();
+       st.pop();
     }
     
     public int top() {
@@ -36,7 +38,7 @@ class MinStack {
     }
     
     public int getMin() {
-       return st.peek().y;
+      return st.peek().y;
     }
 }
 
