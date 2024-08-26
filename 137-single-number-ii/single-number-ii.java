@@ -1,13 +1,20 @@
 class Solution {
     public int singleNumber(int[] nums) {
+        int n = nums.length;
+        int ans = 0;
         
-        Arrays.sort(nums);
-        
-        for(int i =0; i<nums.length-1; i += 3){
-            if(nums[i] != nums[i+2]){
-                return nums[i];
+        for (int i = 0; i < 32; i++) {
+            int cnt = 0;
+            
+            for (int j = 0; j < n; j++) {
+                if ((nums[j] & (1 << i)) != 0) { 
+                    cnt++;
+                }
+            }
+            if (cnt % 3 != 0) { 
+                ans |= (1 << i);
             }
         }
-        return nums[nums.length-1];
+        return ans;
     }
 }
