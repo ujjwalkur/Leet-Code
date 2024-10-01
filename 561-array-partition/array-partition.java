@@ -1,11 +1,12 @@
 class Solution {
     public int arrayPairSum(int[] nums) {
-        int total = 0;
+        int totalSum = 0;
         Arrays.sort(nums);
-
-        for(int i=0; i<nums.length; i=i+2){
-            total+=nums[i];
+        
+        for(int i = 0; i < nums.length; i = i+2){
+            totalSum += nums[i];
         }
-        return total;
+        return totalSum;
     }
 }
+
