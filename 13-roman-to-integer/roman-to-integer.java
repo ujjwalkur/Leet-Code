@@ -1,19 +1,33 @@
 class Solution {
     public int romanToInt(String s) {
-        int ans = 0, num = 0;
-        for (int i = s.length()-1; i >= 0; i--) {
-            switch(s.charAt(i)) {
-                case 'I': num = 1; break;
-                case 'V': num = 5; break;
-                case 'X': num = 10; break;
-                case 'L': num = 50; break;
-                case 'C': num = 100; break;
-                case 'D': num = 500; break;
-                case 'M': num = 1000; break;
+       int sum = 0;
+        int n = s.length();
+        
+        for(int i = 0; i < n; i++){
+            
+            char ch = s.charAt(i);
+            
+            if((i+1) < n && getVal(ch) < getVal(s.charAt(i+1))){
+                sum = sum - getVal(ch);
             }
-            if (4 * num < ans) ans -= num;
-            else ans += num;
+            else{  
+                sum += getVal(ch);
+            }
         }
-        return ans;
+        return sum;
+    }
+    
+    public int getVal(char ch){
+        switch(ch){
+                case 'I': return 1;
+                case 'V': return 5;
+                case 'X': return 10;
+                case 'L': return 50;
+                case 'C': return 100;
+                case 'D': return 500;
+                case 'M': return 1000;
+                
+            default: return 0;
+        }
     }
 }
