@@ -17,20 +17,30 @@ class FindElements {
 
     HashSet<Integer> set;
 
-    public void dfs(TreeNode root, int x){
-        if(root == null){
-            return;
-        }
-        root.val = x;
-        set.add(x);
-        dfs(root.left, 2 * x + 1);
-        dfs(root.right, 2 * x + 2);
-    }
-
     public FindElements(TreeNode root) {
         set = new HashSet<>();
+        Queue<TreeNode> queue = new LinkedList<>();
 
-        dfs(root, 0);
+        root.val = 0;
+        queue.offer(root);
+        set.add(0);
+
+        while(!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            int value = node.val;
+
+            if(node.left != null){
+                node.left.val = 2 * value + 1;
+                set.add(node.left.val);
+                queue.offer(node.left);
+            }
+
+            if(node.right != null){
+                node.right.val = 2 * value + 2;
+                set.add(node.right.val);
+                queue.offer(node.right);
+            }
+        }
     }
     
     public boolean find(int target) {
