@@ -11,9 +11,8 @@ class Solution {
 
         for(int j = 0; j < n; j++){
             for(int k = j + 1; k < n; k++){
-                int num1 = arr[j]; 
-                int num2 = arr[k];
-                int val = num1 + num2;
+                
+                int val = arr[j] + arr[k];
 
                 if(map.containsKey(val)){
                     int x = map.get(val);
