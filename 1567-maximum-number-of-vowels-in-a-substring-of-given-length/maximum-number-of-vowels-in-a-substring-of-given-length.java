@@ -6,15 +6,17 @@ class Solution {
         int count = 0;
         int maxV = 0;
 
+        Predicate<Character> isVowel = ch -> "aeiou".indexOf(ch) != -1;
+
         while(j < n){
-            if(isVowel(s.charAt(j))){
+            if(isVowel.test(s.charAt(j))){
                 count++;
             }
 
             if(j - i + 1 == k){
                 maxV = Math.max(maxV, count);
 
-                if(isVowel(s.charAt(i))){
+                if(isVowel.test(s.charAt(i))){
                     count--;
                 }
                 i++;
@@ -24,7 +26,7 @@ class Solution {
         return maxV;
     }
 
-    public boolean isVowel(char ch){
-        return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'; 
-    }
+    // public boolean isVowel(char ch){
+    //     return ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'; 
+    // }
 }
