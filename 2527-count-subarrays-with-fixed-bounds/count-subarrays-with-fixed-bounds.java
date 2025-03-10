@@ -1,4 +1,5 @@
 class Solution {
+
     public long countSubarrays(int[] nums, int minK, int maxK) {
         int n = nums.length;
 
@@ -20,11 +21,17 @@ class Solution {
                 maxkIdx = i;
             }
 
-            int smallerIdx = Math.min(minkIdx, maxkIdx);
+            int smaller = Math.min(minkIdx, maxkIdx);
+            long temp = smaller - cullIdx;
 
-            long temp = smallerIdx - cullIdx;
+            if(temp <= 0){
+                ans += 0;
+            }
+            else{
+                ans += temp;
+            }
 
-            ans += (temp <= 0)? 0 : temp;
+
         }
         return ans;
     }
