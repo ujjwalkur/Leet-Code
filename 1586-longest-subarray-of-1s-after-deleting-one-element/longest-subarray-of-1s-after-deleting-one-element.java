@@ -8,14 +8,13 @@ class Solution {
 
         while(j < n){
             if(nums[j] == 0){
-                i = zeroIdx + 1;
+                i = zeroIdx+1;
                 zeroIdx = j;
             }
 
             result = Math.max(result, j-i);
             j++;
         }
-        
         return result;
 
     }
