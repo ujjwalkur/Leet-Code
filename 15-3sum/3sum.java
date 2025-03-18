@@ -1,35 +1,42 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] arr) {
-           List<List<Integer>> ans = new ArrayList<>();
-        Arrays.sort(arr);
-        
-        
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            //remove duplicates:
-            if (i != 0 && arr[i] == arr[i - 1]) continue;
+        Arrays.sort(nums);
 
-            //moving 2 pointers:
+        for(int i = 0; i < nums.length; i++){
+            if(i != 0 && nums[i] == nums[i-1]){
+                continue;
+            }
+
             int j = i + 1;
-            int k = arr.length - 1;
-            while (j < k) {
-                int sum = arr[i] + arr[j] + arr[k];
-                if (sum < 0) {
+            int k = nums.length - 1;
+
+            while(j < k){
+                int sum = nums[i] + nums[j] + nums[k];
+
+                if(sum < 0){
                     j++;
-                } else if (sum > 0) {
+                }
+                else if(sum > 0){
                     k--;
-                } else {
-                    List<Integer> temp = Arrays.asList(arr[i], arr[j], arr[k]);
-                    ans.add(temp);
+                }
+                else{
+                    List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k]);
+                    res.add(temp);
                     j++;
                     k--;
-                    //skip the duplicates:
-                    while (j < k && arr[j] == arr[j - 1]) j++;
-                    while (j < k && arr[k] == arr[k + 1]) k--;
+
+                    while(j < k && nums[j] == nums[j - 1]){
+                        j++;
+                    }
+
+                    while(j < k && nums[k] == nums[k+1]){
+                        k--;
+                    }
                 }
             }
         }
-
-        return ans;
+        return res;
     }
 }
